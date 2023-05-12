@@ -11,6 +11,14 @@ const CalculationDisplay = () => {
 export default CalculationDisplay;
 
 const styles = StyleSheet.create({
-  displayContainer: {},
-  displayText: { color: "white" },
+  displayContainer: {
+    width: "85%",
+    height: "15%",
+    alignItems: "center",
+    justifyContent: "center",
+    // temportary until spacing is correct
+    backgroundColor: "red",
+  },
+
+  displayText: { color: "white", fontSize: 40 },
 });

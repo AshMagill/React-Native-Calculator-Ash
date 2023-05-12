@@ -30,8 +30,10 @@ export default MemoryButtons;
 const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: "row",
-    width: "80%",
+    width: "85%",
     justifyContent: "space-between",
+    // temportary until spacing is correct
+    backgroundColor: "green",
   },
   buttons: {
     paddingVertical: 10,
