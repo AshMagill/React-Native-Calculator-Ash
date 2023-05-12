@@ -2,6 +2,13 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { useEffect, useState } from "react";
 
+// main components
+import CalculationDisplay from "./components/CalculationDisplay";
+import MemoryButtons from "./components/MemoryButtons";
+import InputGrid from "./components/InputGrid";
+import DropDownButton from "./components/DropDownButton";
+import HistoryDropDown from "./components/HistoryDropDown";
+
 export default function App() {
   const [currentCalculation, setCurrentCalculation] = useState("");
   const [firstOperand, setFirstOperand] = useState("");
@@ -84,7 +91,7 @@ export default function App() {
   // takes the operator, the first operand and the second operand and returns the calculation
   // also rounds the decimals to 2 places and removes trailing zeros
   // the calculation is saved in state
-  //TODO setHistory needs to concatinate calculation strings not replace them
+  //TODO setHistory needs to be replaced with logic for React Native Storage in accordance with AC for calculator project
   const calculateResult = () => {
     if (operator === "+") {
       setResult(
@@ -139,8 +146,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Im a calculator</Text>
-      <StatusBar style="auto" />
+      <CalculationDisplay />
+      <MemoryButtons />
+      {/*<InputGrid />*/}
+      {/*<DropDownButton />*/}
+      {/*<HistoryDropDown />*/}
+      {/*<StatusBar style="auto" />*/}
     </View>
   );
 }
@@ -148,7 +159,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#1A1A1A",
+    // will these settings cause issues later? we will see..
     alignItems: "center",
     justifyContent: "center",
   },
