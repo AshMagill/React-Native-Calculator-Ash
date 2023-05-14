@@ -1,13 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 import { useEffect, useState } from "react";
 
 // main components
 import CalculationDisplay from "./components/CalculationDisplay";
 import MemoryButtons from "./components/MemoryButtons";
 import InputGrid from "./components/InputGrid";
-import DropDownButton from "./components/DropDownButton";
-import HistoryDropDown from "./components/HistoryDropDown";
+import HistoryButton from "./components/HistoryButton";
 
 export default function App() {
   const [currentCalculation, setCurrentCalculation] = useState("");
@@ -17,6 +16,9 @@ export default function App() {
   const [result, setResult] = useState("");
   const [finishedOperation, setFinishedOperation] = useState(false);
   const [history, setHistory] = useState([]);
+  const [toggleDropDown, setToggleDropDown] = useState(false);
+  //for dropdown
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // this function is sent to the onCick prop in the buttons
   const buttonClickedHandler = (char) => {
@@ -144,24 +146,36 @@ export default function App() {
     );
   }, [result, firstOperand, secondOperand, operator]);
 
+  const toggleDropDownHandler = (open) => {
+    open ? setIsDropdownOpen(true) : setIsDropdownOpen(false);
+  };
+
   return (
-    <View style={styles.container}>
-      <CalculationDisplay />
-      <MemoryButtons />
-      {/*<InputGrid />*/}
-      {/*<DropDownButton />*/}
-      {/*<HistoryDropDown />*/}
-      {/*<StatusBar style="auto" />*/}
-    </View>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <StatusBar style="auto" />
+        <CalculationDisplay />
+        <MemoryButtons />
+        {!isDropdownOpen && <InputGrid />}
+        <HistoryButton toggleDropDownHandler={toggleDropDownHandler} />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 950,
     backgroundColor: "#1A1A1A",
     // will these settings cause issues later? we will see..
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
+  },
+  scrollview: {
+    backgroundColor: "black",
+  },
+  dropdown: {
+    alignItems: "center",
+    height: "auto",
   },
 });

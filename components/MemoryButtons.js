@@ -31,16 +31,18 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: "row",
     width: "85%",
+    height: 50,
     justifyContent: "space-between",
+    marginBottom: 40,
     // temportary until spacing is correct
-    backgroundColor: "green",
+    //backgroundColor: "green",
   },
   buttons: {
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    alignContent: "center",
+    justifyContent: "center",
     elevation: 4,
     width: "47%",
-    borderRadius: 8,
+    borderRadius: 10,
   },
   clearButton: {
     backgroundColor: "#913330",
