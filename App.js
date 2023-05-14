@@ -16,7 +16,6 @@ export default function App() {
   const [result, setResult] = useState("");
   const [finishedOperation, setFinishedOperation] = useState(false);
   const [history, setHistory] = useState([]);
-  const [toggleDropDown, setToggleDropDown] = useState(false);
   //for dropdown
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -29,6 +28,8 @@ export default function App() {
     if (result) {
       return;
     }
+
+    //console.log(moment().utcOffset("+05:30").format("ddd/hh a"));
 
     if (
       // checks if if function isFirstOperand returns true and if the character is either a type on number or a decimal
@@ -99,11 +100,12 @@ export default function App() {
       setResult(
         (parseFloat(firstOperand) + parseFloat(secondOperand)).toFixed(2) * 1
       );
-      setHistory(
-        `${firstOperand}  ${operator} ${secondOperand} : ${
+      setHistory({
+        calculation: `${firstOperand}  ${operator} ${secondOperand} : ${
           (parseFloat(firstOperand) + parseFloat(secondOperand)).toFixed(2) * 1
-        }`
-      );
+        }`,
+        time: moment().utcOffset("+05:30").format("YYYY-MM-DD hh:mm:ss a"),
+      });
     } else if (operator === "-") {
       setResult(
         (parseFloat(firstOperand) - parseFloat(secondOperand)).toFixed(2) * 1
@@ -139,7 +141,7 @@ export default function App() {
   useEffect(() => {
     let equalSign = "";
     if (result) {
-      equalSign = ":";
+      equalSign = "=";
     }
     setCurrentCalculation(
       `${firstOperand} ${operator} ${secondOperand} ${equalSign} ${result}`
