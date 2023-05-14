@@ -3,24 +3,26 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 const MemoryButtons = () => {
   return (
     <View style={styles.buttonsContainer}>
-      <Pressable
-        style={[styles.buttons, styles.clearButton]}
-        onPress={() => {
-          console.log("clear history pressed");
-        }}
-        android_ripple={{ color: "#915D5B" }}
-      >
-        <Text style={styles.buttonsText}>CLEAR HISTORY</Text>
-      </Pressable>
-      <Pressable
-        style={[styles.buttons, styles.deleteButton]}
-        onPress={() => {
-          console.log("delete pressed");
-        }}
-        android_ripple={{ color: "#AB898D" }}
-      >
-        <Text style={styles.buttonsText}>DELETE</Text>
-      </Pressable>
+      <View style={[styles.buttons, styles.clearButton]}>
+        <Pressable
+          onPress={() => {
+            console.log("clear history pressed");
+          }}
+          android_ripple={{ color: "#915D5B", borderless: true }}
+        >
+          <Text style={styles.buttonsText}>CLEAR HISTORY</Text>
+        </Pressable>
+      </View>
+      <View style={[styles.buttons, styles.deleteButton]}>
+        <Pressable
+          onPress={() => {
+            console.log("delete pressed");
+          }}
+          android_ripple={{ color: "#AB898D", borderless: true }}
+        >
+          <Text style={styles.buttonsText}>DELETE</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
