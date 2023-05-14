@@ -33,7 +33,6 @@ const HistoryButton = ({ toggleDropDownHandler }) => {
         setItems={setItems}
         placeholder="       HISTORY"
         placeholderStyle={{ fontSize: 18 }}
-        alwaysBounceVertical={false}
         //disabled={true}
         //itemStyle={{ alignItems: "flex-start|flex-end|center" }}
         itemStyle={{
@@ -76,7 +75,6 @@ const styles = StyleSheet.create({
     height: 410,
     borderRadius: 10,
     marginBottom: 500,
-    position: "relative",
     //paddingBottom: 600,
     //paddingBottom: 600,
     //backgroundColor: "white",

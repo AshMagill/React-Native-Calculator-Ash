@@ -154,9 +154,9 @@ export default function App() {
     <SafeAreaView>
       <View style={styles.container}>
         <StatusBar style="auto" />
-        <CalculationDisplay />
-        <MemoryButtons />
-        {!isDropdownOpen && <InputGrid />}
+        <CalculationDisplay calculationText={currentCalculation} />
+        <MemoryButtons onDelete={deleteRecentInputHandler} />
+        {!isDropdownOpen && <InputGrid onButton={buttonClickedHandler} />}
         <HistoryButton toggleDropDownHandler={toggleDropDownHandler} />
       </View>
     </SafeAreaView>

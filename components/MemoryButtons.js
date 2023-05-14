@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
-const MemoryButtons = () => {
+const MemoryButtons = ({ onDelete }) => {
   return (
     <View style={styles.buttonsContainer}>
       <View style={[styles.buttons, styles.clearButton]}>
@@ -15,9 +15,7 @@ const MemoryButtons = () => {
       </View>
       <View style={[styles.buttons, styles.deleteButton]}>
         <Pressable
-          onPress={() => {
-            console.log("delete pressed");
-          }}
+          onPress={onDelete}
           android_ripple={{ color: "#AB898D", borderless: true }}
         >
           <Text style={styles.buttonsText}>DELETE</Text>

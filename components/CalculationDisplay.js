@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet } from "react-native";
 
-const CalculationDisplay = () => {
+const CalculationDisplay = ({ calculationText }) => {
   return (
     <View style={styles.displayContainer}>
-      <Text style={styles.displayText}>1 + 1 = 2</Text>
+      <Text style={styles.displayText}>{calculationText}</Text>
     </View>
   );
 };
