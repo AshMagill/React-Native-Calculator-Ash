@@ -1,6 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, SafeAreaView } from "react-native";
 import { useEffect, useState } from "react";
+import moment from "moment";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // main components
 import CalculationDisplay from "./components/CalculationDisplay";
@@ -9,16 +11,80 @@ import InputGrid from "./components/InputGrid";
 import HistoryButton from "./components/HistoryButton";
 
 export default function App() {
+  // STATE
   const [currentCalculation, setCurrentCalculation] = useState("");
   const [firstOperand, setFirstOperand] = useState("");
   const [secondOperand, setSecondOperand] = useState("");
   const [operator, setOperator] = useState("");
   const [result, setResult] = useState("");
   const [finishedOperation, setFinishedOperation] = useState(false);
-  const [history, setHistory] = useState([]);
-  //for dropdown
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [historyData, setHistoryData] = useState([
+    { value: null, label: null },
+  ]);
 
+  // PERSISTING MEMORY WITH ASYNC STORAGE
+  // wipe data
+  const wipeHistory = async () => {
+    try {
+      await AsyncStorage.removeItem("history");
+      console.log("history is wiped");
+    } catch (error) {
+      console.log("wipe history: " + error.message);
+    }
+  };
+
+  // get data
+  const getHistory = async () => {
+    try {
+      const value = JSON.parse(await AsyncStorage.getItem("history"));
+      if (value !== null) {
+        // we have data!!
+        setHistoryData(value);
+      }
+    } catch (error) {
+      console.log("get history: " + error.message);
+    }
+  };
+
+  //this breaks
+  useEffect(() => {
+    getHistory();
+  }, [getHistory, wipeHistory]);
+
+  // storing data
+  const storeHistory = async (value) => {
+    // if an array already exists, push new value to it
+    const oldHistory = await AsyncStorage.getItem("history");
+    if (oldHistory === null) {
+      console.log("no history database, creating one..");
+      // initialsie the database as an empty array
+      await AsyncStorage.setItem("history", "[]");
+    }
+    console.log("persisting data exists, fetching now..");
+    //creates an object based on the value and current time
+    try {
+      const valueObject = {
+        label: value,
+        value: moment().valueOf(),
+      };
+      // fetches the old history
+      let oldHistoy = await AsyncStorage.getItem("history");
+      // parses old history
+      const parsedOldHistory = JSON.parse(oldHistoy);
+      // updates the old history by adding new value
+      const updatedHistory = [...parsedOldHistory, valueObject];
+      // save updated history
+      await AsyncStorage.setItem("history", JSON.stringify(updatedHistory));
+    } catch (error) {
+      console.log("store history: " + error.message);
+    }
+  };
+
+  // Wipes History whenever these
+  //useEffect(getHistory(), [storeHistory, wipeHistory]);
+
+  // CALCULATIONS
   // this function is sent to the onCick prop in the buttons
   const buttonClickedHandler = (char) => {
     if (finishedOperation === true) {
@@ -28,9 +94,6 @@ export default function App() {
     if (result) {
       return;
     }
-
-    //console.log(moment().utcOffset("+05:30").format("ddd/hh a"));
-
     if (
       // checks if if function isFirstOperand returns true and if the character is either a type on number or a decimal
       // if true sets first operand
@@ -67,6 +130,7 @@ export default function App() {
     }
   };
 
+  // deletes current calculation in display when a new one is entered
   const deletecurrrentCalculation = () => {
     setResult("");
     setOperator("");
@@ -90,27 +154,15 @@ export default function App() {
     return char === "+" || char === "-" || char === "*" || char === "/";
   };
 
-  // TODO make this a switch statement
   // takes the operator, the first operand and the second operand and returns the calculation
   // also rounds the decimals to 2 places and removes trailing zeros
-  // the calculation is saved in state
-  //TODO setHistory needs to be replaced with logic for React Native Storage in accordance with AC for calculator project
+  // the calculation is saved in state for display and then its added to history with AsyncStorage
   const calculateResult = () => {
-    if (operator === "+") {
-      setResult(
-        (parseFloat(firstOperand) + parseFloat(secondOperand)).toFixed(2) * 1
-      );
-      setHistory({
-        calculation: `${firstOperand}  ${operator} ${secondOperand} : ${
-          (parseFloat(firstOperand) + parseFloat(secondOperand)).toFixed(2) * 1
-        }`,
-        time: moment().utcOffset("+05:30").format("YYYY-MM-DD hh:mm:ss a"),
-      });
-    } else if (operator === "-") {
+    if (operator === "-") {
       setResult(
         (parseFloat(firstOperand) - parseFloat(secondOperand)).toFixed(2) * 1
       );
-      setHistory(
+      storeHistory(
         `${firstOperand}  ${operator} ${secondOperand} : ${
           (parseFloat(firstOperand) - parseFloat(secondOperand)).toFixed(2) * 1
         }`
@@ -136,13 +188,14 @@ export default function App() {
     }
   };
 
-  // sets the current calculation every time the dependancies are altered
-  // the ':' character is not shown unless the result is truthy
+  // if the result exists, dispaly an equalSign in the calculation, otherwise wait to add it
   useEffect(() => {
     let equalSign = "";
     if (result) {
       equalSign = "=";
     }
+
+    // sets the current calculation to string
     setCurrentCalculation(
       `${firstOperand} ${operator} ${secondOperand} ${equalSign} ${result}`
     );
@@ -157,9 +210,15 @@ export default function App() {
       <View style={styles.container}>
         <StatusBar style="auto" />
         <CalculationDisplay calculationText={currentCalculation} />
-        <MemoryButtons onDelete={deleteRecentInputHandler} />
+        <MemoryButtons
+          wipeHistory={wipeHistory}
+          onDelete={deleteRecentInputHandler}
+        />
         {!isDropdownOpen && <InputGrid onButton={buttonClickedHandler} />}
-        <HistoryButton toggleDropDownHandler={toggleDropDownHandler} />
+        <HistoryButton
+          historyData={historyData}
+          toggleDropDownHandler={toggleDropDownHandler}
+        />
       </View>
     </SafeAreaView>
   );
@@ -169,7 +228,6 @@ const styles = StyleSheet.create({
   container: {
     height: 950,
     backgroundColor: "#1A1A1A",
-    // will these settings cause issues later? we will see..
     alignItems: "center",
     justifyContent: "space-between",
   },
