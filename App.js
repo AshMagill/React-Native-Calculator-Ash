@@ -19,7 +19,7 @@ export default function App() {
   const [result, setResult] = useState("");
   const [finishedOperation, setFinishedOperation] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [historyData, setHistoryData] = useState([{}]);
+  const [historyData, setHistoryData] = useState([]);
 
   // PERSISTING MEMORY WITH ASYNC STORAGE
   // wipe data
@@ -68,6 +68,7 @@ export default function App() {
       const valueObject = {
         label: value,
         value: moment().valueOf(),
+        key: moment().valueOf(),
       };
       // fetches the old history
       let oldHistoy = await AsyncStorage.getItem("history");
@@ -82,9 +83,6 @@ export default function App() {
       console.log("store history: " + error.message);
     }
   };
-
-  // Wipes History whenever these
-  //useEffect(getHistory(), [storeHistory, wipeHistory]);
 
   // CALCULATIONS
   // this function is sent to the onCick prop in the buttons
@@ -175,7 +173,7 @@ export default function App() {
       );
       storeHistory(
         `${firstOperand}  ${operator} ${secondOperand} = ${
-          (parsefloat(firstOperand) + parsefloat(secondOperand)).toFixed(2) * 1
+          (parseFloat(firstOperand) + parseFloat(secondOperand)).toFixed(2) * 1
         }`
       );
     } else if (operator === "/") {

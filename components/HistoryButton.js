@@ -5,9 +5,10 @@ import DropDownPicker from "react-native-dropdown-picker";
 const HistoryButton = ({ toggleDropDownHandler, historyData, getHistory }) => {
   const [open, setOpen] = useState(false);
 
+  // resets the history when the dropdown is called
   useEffect(() => {
     getHistory();
-  }, [open, setOpen]);
+  }, [open]);
 
   return (
     <View style={styles.buttonContainer}>
@@ -16,7 +17,7 @@ const HistoryButton = ({ toggleDropDownHandler, historyData, getHistory }) => {
         open={open}
         items={historyData}
         setOpen={setOpen}
-        placeholder="       HISTORY"
+        placeholder={"       HISTORY"}
         maxHeight={250}
         placeholderStyle={{ fontSize: 18 }}
         itemStyle={{
