@@ -1,13 +1,11 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
-const MemoryButtons = ({ onDelete }) => {
+const MemoryButtons = ({ onDelete, wipeHistory }) => {
   return (
     <View style={styles.buttonsContainer}>
       <View style={[styles.buttons, styles.clearButton]}>
         <Pressable
-          onPress={() => {
-            console.log("clear history pressed");
-          }}
+          onPress={wipeHistory}
           android_ripple={{ color: "#915D5B", borderless: true }}
         >
           <Text style={styles.buttonsText}>CLEAR HISTORY</Text>
@@ -34,8 +32,6 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: "space-between",
     marginBottom: 40,
-    // temportary until spacing is correct
-    //backgroundColor: "green",
   },
   buttons: {
     alignContent: "center",

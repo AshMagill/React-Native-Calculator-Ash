@@ -17,8 +17,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 80,
-    // temportary until spacing is correct
-    //backgroundColor: "red",
   },
 
   displayText: { color: "white", fontSize: 40 },

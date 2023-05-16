@@ -132,7 +132,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.redButton]}>
           <Pressable
-            onPress={() => onButton(6)}
+            onPress={() => onButton("/")}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
             <Text style={styles.buttonText}>/</Text>
