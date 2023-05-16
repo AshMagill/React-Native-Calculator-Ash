@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
-const HistoryButton = ({ toggleDropDownHandler, historyData }) => {
+const HistoryButton = ({ toggleDropDownHandler, historyData, getHistory }) => {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    getHistory();
+  }, [open, setOpen]);
 
   return (
     <View style={styles.buttonContainer}>
@@ -13,6 +17,7 @@ const HistoryButton = ({ toggleDropDownHandler, historyData }) => {
         items={historyData}
         setOpen={setOpen}
         placeholder="       HISTORY"
+        maxHeight={250}
         placeholderStyle={{ fontSize: 18 }}
         itemStyle={{
           justifyContent: "flex-start",

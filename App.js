@@ -19,12 +19,15 @@ export default function App() {
   const [result, setResult] = useState("");
   const [finishedOperation, setFinishedOperation] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [historyData, setHistoryData] = useState([
-    { value: null, label: null },
-  ]);
+  const [historyData, setHistoryData] = useState([{}]);
 
   // PERSISTING MEMORY WITH ASYNC STORAGE
   // wipe data
+
+  useEffect(() => {
+    getHistory();
+  }, [wipeHistory]);
+
   const wipeHistory = async () => {
     try {
       await AsyncStorage.removeItem("history");
@@ -41,16 +44,14 @@ export default function App() {
       if (value !== null) {
         // we have data!!
         setHistoryData(value);
+        console.log("get history");
+      } else if (value === null) {
+        await AsyncStorage.setItem("history", "[]");
       }
     } catch (error) {
       console.log("get history: " + error.message);
     }
   };
-
-  //this breaks
-  useEffect(() => {
-    getHistory();
-  }, [getHistory, wipeHistory]);
 
   // storing data
   const storeHistory = async (value) => {
@@ -76,6 +77,7 @@ export default function App() {
       const updatedHistory = [...parsedOldHistory, valueObject];
       // save updated history
       await AsyncStorage.setItem("history", JSON.stringify(updatedHistory));
+      console.log("store history");
     } catch (error) {
       console.log("store history: " + error.message);
     }
@@ -163,16 +165,25 @@ export default function App() {
         (parseFloat(firstOperand) - parseFloat(secondOperand)).toFixed(2) * 1
       );
       storeHistory(
-        `${firstOperand}  ${operator} ${secondOperand} : ${
+        `${firstOperand} ${operator} ${secondOperand} = ${
           (parseFloat(firstOperand) - parseFloat(secondOperand)).toFixed(2) * 1
+        }`
+      );
+    } else if (operator === "+") {
+      setResult(
+        (parseFloat(firstOperand) + parseFloat(secondOperand)).toFixed(2) * 1
+      );
+      storeHistory(
+        `${firstOperand}  ${operator} ${secondOperand} = ${
+          (parsefloat(firstOperand) + parsefloat(secondOperand)).toFixed(2) * 1
         }`
       );
     } else if (operator === "/") {
       setResult(
         (parseFloat(firstOperand) / parseFloat(secondOperand)).toFixed(2) * 1
       );
-      setHistory(
-        `${firstOperand}  ${operator} ${secondOperand} : ${
+      storeHistory(
+        `${firstOperand}  ${operator} ${secondOperand} = ${
           (parseFloat(firstOperand) / parseFloat(secondOperand)).toFixed(2) * 1
         }`
       );
@@ -180,8 +191,8 @@ export default function App() {
       setResult(
         (parseFloat(firstOperand) * parseFloat(secondOperand)).toFixed(2) * 1
       );
-      setHistory(
-        `${firstOperand}  ${operator} ${secondOperand} : ${
+      storeHistory(
+        `${firstOperand}  ${operator} ${secondOperand} = ${
           (parseFloat(firstOperand) * parseFloat(secondOperand)).toFixed(2) * 1
         }`
       );
@@ -216,6 +227,7 @@ export default function App() {
         />
         {!isDropdownOpen && <InputGrid onButton={buttonClickedHandler} />}
         <HistoryButton
+          getHistory={getHistory}
           historyData={historyData}
           toggleDropDownHandler={toggleDropDownHandler}
         />
