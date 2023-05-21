@@ -56,19 +56,6 @@ To get a local copy up and running follow these simple steps.
 
 <!-- USAGE -->
 
-## Usage
-
-Reboot and log in, check the manual to get a handle on navigation and programs (windows + f1) or (windows + f2) for a list of video guides.
-
-<b>Click this YouTube link to get a quick demo of how everything works:</b>
-</br>
-
-<a  href="http://www.youtube.com/watch?feature=player_embedded&v=B1y8VglyoBU" target="_blank">
- <img  src="http://img.youtube.com/vi/B1y8VglyoBU/mqdefault.jpg" alt="Watch the video" width="400" height="auto" border="10" />
-</a>
-
-<!-- CONTRIBUTING -->
-
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
