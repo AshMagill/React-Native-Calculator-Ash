@@ -4,7 +4,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 
 </span>
 
@@ -94,4 +93,3 @@ Project Link: [https://github.com/AshMagill/react-native-calculator-ash](https:/
 [stars-url]: https://github.com/AshMagill/React-Native-Calculator-Ash/stargazers
 [issues-shield]: https://img.shields.io/github/issues/AshMagill/React-Native-Calculator-Ash.svg?style=for-the-badge
 [license-shield]: https://img.shields.io/github/license/AshMagill/React-Native-Calculator-Ash.svg?style=for-the-badge
-[license-url]: https://github.com/AshMagill/React-Native-Calculator-Ash/blob/main/LICENSE
