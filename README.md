@@ -60,8 +60,7 @@
 
 ## About The Project
 
-This project is avaliable to preview here <a href="exp://u.expo.dev/update/72585dc6-7c21-45b0-ac1a-79faaaa54e2c">DEMO</a> via expo.
-t
+This project is avaliable to preview here: "exp://u.expo.dev/update/72585dc6-7c21-45b0-ac1a-79faaaa54e2c" via expo.
 
 <details open="open">
 <Summary>Development Tools</Summary>
