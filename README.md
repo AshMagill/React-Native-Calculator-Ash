@@ -31,14 +31,6 @@
 
 This project is avaliable to preview here: "exp://u.expo.dev/update/72585dc6-7c21-45b0-ac1a-79faaaa54e2c" via expo.
 
-<details open="open">
-<Summary>Development Tools</Summary>
-<br>
-
-I have added all the necessary tools required for MERN and PERN stack web development. It has both GUI and terminal based applications for pretty much everything MERN. Also made everything gruvbox 😀
-
-</details>
-
 <!-- GETTING STARTED -->
 
 ## Getting Started
