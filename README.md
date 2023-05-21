@@ -38,9 +38,10 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
+- Git
 - Yarn
 - Expo
-- Android / Ios Emulator, or an actual Phone to run the App via expo
+- Android Studio, or an actual Phone to run the App via Expo
 
 ### Installation
 
@@ -48,9 +49,13 @@ To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/AshMagill/react-native-calculator-ash.git
    ```
-2. CD into folder, and run the script (as root)
+2. CD into folder, and install required node modules (as root)
    ```sh
    yarn install
+   ```
+3. Run the Application with Android
+   ```sh
+   yarn android
    ```
 
 <!-- USAGE -->
