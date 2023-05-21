@@ -49,7 +49,7 @@ To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/AshMagill/react-native-calculator-ash.git
    ```
-2. CD into folder, and install required node modules (as root)
+2. CD into folder, and install required node modules
    ```sh
    yarn install
    ```
