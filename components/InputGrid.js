@@ -6,6 +6,7 @@ const Inputgrid = ({ onButton }) => {
       <View style={styles.rowContainer}>
         <View style={[styles.button, styles.yellowButton]}>
           <Pressable
+            testID="oneButton"
             onPress={() => onButton(1)}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -14,6 +15,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.yellowButton]}>
           <Pressable
+            testID="twoButton"
             onPress={() => onButton(2)}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -22,6 +24,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.yellowButton]}>
           <Pressable
+            testID="threeButton"
             onPress={() => onButton(3)}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -30,6 +33,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.redButton]}>
           <Pressable
+            testID="plusButton"
             onPress={() => onButton("+")}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -40,6 +44,7 @@ const Inputgrid = ({ onButton }) => {
       <View style={styles.rowContainer}>
         <View style={[styles.button, styles.yellowButton]}>
           <Pressable
+            testID="fourButton"
             onPress={() => onButton(4)}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -48,6 +53,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.yellowButton]}>
           <Pressable
+            testID="fiveButton"
             onPress={() => onButton(5)}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -56,6 +62,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.yellowButton]}>
           <Pressable
+            testID="sixButton"
             onPress={() => onButton(6)}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -64,6 +71,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.redButton]}>
           <Pressable
+            testID="minusButton"
             onPress={() => onButton("-")}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -74,6 +82,7 @@ const Inputgrid = ({ onButton }) => {
       <View style={styles.rowContainer}>
         <View style={[styles.button, styles.yellowButton]}>
           <Pressable
+            testID="sevenButton"
             onPress={() => onButton(7)}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -82,6 +91,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.yellowButton]}>
           <Pressable
+            testID="eightButton"
             onPress={() => onButton(8)}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -90,6 +100,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.yellowButton]}>
           <Pressable
+            testID="nineButton"
             onPress={() => onButton(9)}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -98,6 +109,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.redButton]}>
           <Pressable
+            testID="multiplyButton"
             onPress={() => onButton("*")}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -108,6 +120,7 @@ const Inputgrid = ({ onButton }) => {
       <View style={styles.rowContainer}>
         <View style={[styles.button, styles.yellowButton]}>
           <Pressable
+            testID="zeroButton"
             onPress={() => onButton(0)}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -116,6 +129,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.yellowButton]}>
           <Pressable
+            testID="decimalButton"
             onPress={() => onButton(".")}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -124,6 +138,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.pinkButton]}>
           <Pressable
+            testID="equalButton"
             onPress={() => onButton("=")}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >
@@ -132,6 +147,7 @@ const Inputgrid = ({ onButton }) => {
         </View>
         <View style={[styles.button, styles.redButton]}>
           <Pressable
+            testID="divideButton"
             onPress={() => onButton("/")}
             android_ripple={{ color: "#F8F0E3", borderless: true }}
           >

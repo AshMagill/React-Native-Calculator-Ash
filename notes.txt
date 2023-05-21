@@ -1,0 +1,12 @@
+Notes from meeting with Wrenly:
+
+react native testing libary
+render and screen connected
+fire event
+
+I can update the published expo with code adjustments
+update expo publishing
+
+next week: 
+expo sdk external acess
+
