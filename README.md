@@ -25,37 +25,6 @@
   </p>
 </p>
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <Summary><h2 style="display: inline-block">Table of Contents</h2></Summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#about-the-project">Built With</a></li>
-        <li><a href="#about-the-project">Development Tools</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#prerequisites">Installation</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#demo-video">Usage</a>
-      <ul>
-       <li><a href="#demo-video">Demo Video</a></li>
-      </ul>
-    </li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
-
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
